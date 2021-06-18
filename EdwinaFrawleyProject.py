@@ -100,16 +100,30 @@ DOGE_transposed=np.transpose(my_array)
 print(my_array)
 
 #18 Two charts using Matplotlib
+import numpy as np
+import seaborn as sns
 import matplotlib.pyplot as plt
+import pandas as pd
 
-stock_data_Day = (1, 2, 3, 4, 5, 6, 7, 8, 9)
-stock_data_Price = (78.72, 75.98, 78.21, 78.21, 76.34, 75.75, 75.71, 79.11 )
-fig, ax = plt.subplots()
-ax.plot(stock_data_Day, stock_data_Price)
+stock_data = pd.read_csv("DOGE-USD.csv")
+
+DOGE_USD.describe().plot(kind = "area",fontsize =27, figsize = (20,8),table = True, colormap="rainbow")
+plt.xlabel("Date")
+plt.ylabel("Close")
+plt.title("Closing price of Dogecoin")
 plt.show()
 
 
 
+
+X = np.linspace(0, 9)
+Y = np.cos (X)
+fig, ax = plt.subplots()
+ax.plot(X,Y,color="C1")
+plt.xlabel ("Day")
+plt.ylabel ("Price")
+plt.title ("Stock Data")
+plt.show()
 
 
 
