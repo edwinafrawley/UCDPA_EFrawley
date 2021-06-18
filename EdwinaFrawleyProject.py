@@ -31,11 +31,16 @@ print(data2["data"])
 
 
 #2. Import CSV File into a Pandas DataFrame
+import pandas as pd
+DOGE=pandas.read_csv("DOGE-USD.csv")
+print(DOGE.head())
 
-import data =pandas.read_csv(DOGE-USD.csv)
-print(data)
+#3. Check if there are any missing values
+print(DOGE.isna().any())
 
+#4. Replace missing values with Zero
+DOGE = DOGE.fillna(0)
 
-
-
+#5. Check if there are any missing values
+print(DOGE.isna().any())
 
