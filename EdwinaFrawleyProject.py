@@ -44,3 +44,72 @@ DOGE = DOGE.fillna(0)
 #5. Check if there are any missing values
 print(DOGE.isna().any())
 
+#6. Create a list of dictionaries based on DOGE_USD Data
+DOGE_list = [
+    {"Date": "2021-06-13", "Open": 0.312485, "Close": 0.324382},
+    {"Date": "2021-06-14", "Open": 0.326464, "Close": 0.322889},]
+print(DOGE_list)
+
+#7. Create a dictionary of lists with DOGE data
+DOGE_dict = {
+  "Date": ["2021-06-13", "2021-06-14"],
+  "Open": [0.312485, 0.326464],
+  "Close": [0.324382, 0.322889]}
+
+#8. Convert dictionary into DataFrame
+DOGE = pd.DataFrame(DOGE_dict)
+print(DOGE)
+
+#9. Sort DOGE_USD Data
+DOGE_USD = pd.read_csv("DOGE-USD.csv")
+DOGE_USD_sorted = DOGE_USD.sort_values("Close", ascending=False)
+print(DOGE_USD_sorted)
+
+#10. Check if any columns contain missing values
+print(DOGE_USD.isna().any())
+
+#11. Replace rows with missing values with 0
+DOGE_USD_sorted = DOGE_USD.fillna(0)
+print(DOGE_USD_sorted.isna().any())
+
+#12. Index Dogecoin by High
+DOGE_USD_ind = DOGE_USD.set_index("High")
+print(DOGE_USD_ind)
+
+#13. Reset the index, keeping its contents
+print(DOGE_USD_ind.reset_index())
+
+#14. Group data by High greater than 0.0003
+DOGE_High = DOGE_USD_ind.groupby("High").mean()
+print(DOGE_High)
+
+#15. Loop while through dataframe DOGE_USD
+for row in DOGE_USD.head().iterrows():
+    print(row)
+
+#16. Merge Dataframes created above DOGE_USD and DOGE
+df2 = pd.concat([DOGE_USD, DOGE], axis=1)
+print(df2)
+
+#17 Numpy example
+import numpy as np
+my_array=np.array([DOGE_USD])
+print(my_array)
+
+DOGE_transposed=np.transpose(my_array)
+print(my_array)
+
+#18 Two charts using Matplotlib
+import matplotlib.pyplot as plt
+
+stock_data_Day = (1, 2, 3, 4, 5, 6, 7, 8, 9)
+stock_data_Price = (78.72, 75.98, 78.21, 78.21, 76.34, 75.75, 75.71, 79.11 )
+fig, ax = plt.subplots()
+ax.plot(stock_data_Day, stock_data_Price)
+plt.show()
+
+
+
+
+
+
