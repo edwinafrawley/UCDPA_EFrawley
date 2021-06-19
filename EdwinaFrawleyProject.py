@@ -46,7 +46,7 @@ print(DOGE.isna().any())
 
 #6. Create a list of dictionaries based on DOGE_USD Data
 DOGE_list = [
-    {"Date": "2021-06-13", "Open": 0.312485, "Close": 0.324382},
+        {"Date": "2021-06-13", "Open": 0.312485, "Close": 0.324382},
     {"Date": "2021-06-14", "Open": 0.326464, "Close": 0.322889},]
 print(DOGE_list)
 
@@ -100,30 +100,32 @@ DOGE_transposed=np.transpose(my_array)
 print(my_array)
 
 #18 Two charts using Matplotlib
-import numpy as np
-import seaborn as sns
+#Chart 1
 import matplotlib.pyplot as plt
-import pandas as pd
 
-stock_data = pd.read_csv("DOGE-USD.csv")
+Dogecoin = pd.read_csv("Dogecoin.csv")
 
-DOGE_USD.describe().plot(kind = "area",fontsize =27, figsize = (20,8),table = True, colormap="rainbow")
+Dogecoin.plot(kind="bar", x="Date", y="Close", fontsize =27, figsize = (20,8))
 plt.xlabel("Date")
 plt.ylabel("Close")
 plt.title("Closing price of Dogecoin")
 plt.show()
 
+#Chart2
+import matplotlib.pyplot as plt
 
-
-
-X = np.linspace(0, 9)
-Y = np.cos (X)
 fig, ax = plt.subplots()
-ax.plot(X,Y,color="C1")
-plt.xlabel ("Day")
-plt.ylabel ("Price")
-plt.title ("Stock Data")
+ax.plot(Dogecoin["Date"], Dogecoin["Close"], marker="v", linestyle="--", color="r")
+ax.plot(Dogecoin["Date"], Dogecoin["Open"])
+ax.set_xlabel("Time (months)")
+ax.set_ylabel("Prices")
 plt.show()
+
+#19. Functions creating reusable code
+def greet(who="Edwina"):
+    print("Hello,", who)
+greet()
+greet(who="John")
 
 
 
